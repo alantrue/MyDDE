@@ -32,8 +32,8 @@ namespace CsDDE_Simple_
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgConnection = new System.Windows.Forms.DataGridView();
             this.col_service = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_topic = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +72,8 @@ namespace CsDDE_Simple_
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.dgTest = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbBigSub = new System.Windows.Forms.TextBox();
             this.tbSub = new System.Windows.Forms.TextBox();
             this.tbAccBigSellPct = new System.Windows.Forms.TextBox();
@@ -100,8 +102,14 @@ namespace CsDDE_Simple_
             this.label1 = new System.Windows.Forms.Label();
             this.dgBigSell = new System.Windows.Forms.DataGridView();
             this.SellVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTest = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBigBuyList = new System.Windows.Forms.DataGridView();
+            this.buy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBigSellList = new System.Windows.Forms.DataGridView();
+            this.sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSellList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBuyList = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgConnection)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -113,8 +121,12 @@ namespace CsDDE_Simple_
             ((System.ComponentModel.ISupportInitialize)(this.dgItemInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgBigBuy)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBigSell)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBigSell)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBigBuyList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBigSellList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSellList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBuyList)).BeginInit();
             this.SuspendLayout();
             // 
             // dgConnection
@@ -157,10 +169,10 @@ namespace CsDDE_Simple_
             // 
             // col_remove_conn
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            this.col_remove_conn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.col_remove_conn.DefaultCellStyle = dataGridViewCellStyle1;
             this.col_remove_conn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.col_remove_conn.HeaderText = "";
             this.col_remove_conn.Name = "col_remove_conn";
@@ -171,10 +183,10 @@ namespace CsDDE_Simple_
             // 
             // col_btn_add_item
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.col_btn_add_item.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.col_btn_add_item.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_btn_add_item.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.col_btn_add_item.HeaderText = "";
             this.col_btn_add_item.Name = "col_btn_add_item";
@@ -215,24 +227,24 @@ namespace CsDDE_Simple_
             this.groupBox3.Controls.Add(this.btnClearBuy);
             this.groupBox3.Location = new System.Drawing.Point(6, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(412, 141);
+            this.groupBox3.Size = new System.Drawing.Size(325, 141);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DDE 項目資訊";
             // 
             // numVol
             // 
-            this.numVol.Location = new System.Drawing.Point(99, 80);
+            this.numVol.Location = new System.Drawing.Point(69, 80);
             this.numVol.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numVol.Name = "numVol";
-            this.numVol.Size = new System.Drawing.Size(55, 22);
+            this.numVol.Size = new System.Drawing.Size(51, 22);
             this.numVol.TabIndex = 23;
             this.numVol.Value = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             0});
@@ -241,7 +253,7 @@ namespace CsDDE_Simple_
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(97, 62);
+            this.label21.Location = new System.Drawing.Point(67, 62);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(44, 12);
             this.label21.TabIndex = 22;
@@ -250,7 +262,7 @@ namespace CsDDE_Simple_
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(97, 16);
+            this.label20.Location = new System.Drawing.Point(67, 16);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(56, 12);
             this.label20.TabIndex = 21;
@@ -269,17 +281,17 @@ namespace CsDDE_Simple_
             // 
             this.labelCurVol.AutoSize = true;
             this.labelCurVol.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labelCurVol.Location = new System.Drawing.Point(247, 63);
+            this.labelCurVol.Location = new System.Drawing.Point(234, 63);
             this.labelCurVol.Name = "labelCurVol";
-            this.labelCurVol.Size = new System.Drawing.Size(92, 19);
+            this.labelCurVol.Size = new System.Drawing.Size(60, 19);
             this.labelCurVol.TabIndex = 19;
-            this.labelCurVol.Text = "cur volumn";
+            this.labelCurVol.Text = "cur vol";
             // 
             // labelCurPrice
             // 
             this.labelCurPrice.AutoSize = true;
             this.labelCurPrice.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labelCurPrice.Location = new System.Drawing.Point(169, 63);
+            this.labelCurPrice.Location = new System.Drawing.Point(144, 63);
             this.labelCurPrice.Name = "labelCurPrice";
             this.labelCurPrice.Size = new System.Drawing.Size(73, 19);
             this.labelCurPrice.TabIndex = 18;
@@ -287,32 +299,37 @@ namespace CsDDE_Simple_
             // 
             // numBoxDown
             // 
-            this.numBoxDown.Location = new System.Drawing.Point(173, 111);
+            this.numBoxDown.Location = new System.Drawing.Point(148, 109);
             this.numBoxDown.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numBoxDown.Name = "numBoxDown";
-            this.numBoxDown.Size = new System.Drawing.Size(60, 22);
+            this.numBoxDown.Size = new System.Drawing.Size(52, 22);
             this.numBoxDown.TabIndex = 17;
             // 
             // numBoxUp
             // 
-            this.numBoxUp.Location = new System.Drawing.Point(174, 30);
+            this.numBoxUp.Location = new System.Drawing.Point(149, 30);
             this.numBoxUp.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numBoxUp.Name = "numBoxUp";
-            this.numBoxUp.Size = new System.Drawing.Size(60, 22);
+            this.numBoxUp.Size = new System.Drawing.Size(51, 22);
             this.numBoxUp.TabIndex = 16;
+            this.numBoxUp.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(172, 94);
+            this.label18.Location = new System.Drawing.Point(147, 95);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(44, 12);
             this.label18.TabIndex = 15;
@@ -321,7 +338,7 @@ namespace CsDDE_Simple_
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(172, 15);
+            this.label17.Location = new System.Drawing.Point(147, 15);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(44, 12);
             this.label17.TabIndex = 14;
@@ -332,14 +349,14 @@ namespace CsDDE_Simple_
             this.textBoxName.Location = new System.Drawing.Point(7, 16);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(76, 22);
+            this.textBoxName.Size = new System.Drawing.Size(57, 22);
             this.textBoxName.TabIndex = 13;
             this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // cbTimer
             // 
             this.cbTimer.AutoSize = true;
-            this.cbTimer.Location = new System.Drawing.Point(58, 117);
+            this.cbTimer.Location = new System.Drawing.Point(56, 117);
             this.cbTimer.Margin = new System.Windows.Forms.Padding(2);
             this.cbTimer.Name = "cbTimer";
             this.cbTimer.Size = new System.Drawing.Size(15, 14);
@@ -349,13 +366,18 @@ namespace CsDDE_Simple_
             // 
             // numBigVolAlert
             // 
-            this.numBigVolAlert.Location = new System.Drawing.Point(99, 30);
+            this.numBigVolAlert.Location = new System.Drawing.Point(69, 30);
             this.numBigVolAlert.Margin = new System.Windows.Forms.Padding(2);
+            this.numBigVolAlert.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numBigVolAlert.Name = "numBigVolAlert";
             this.numBigVolAlert.Size = new System.Drawing.Size(51, 22);
             this.numBigVolAlert.TabIndex = 11;
             this.numBigVolAlert.Value = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             0});
@@ -366,7 +388,7 @@ namespace CsDDE_Simple_
             this.numBigVol.Location = new System.Drawing.Point(7, 83);
             this.numBigVol.Margin = new System.Windows.Forms.Padding(2);
             this.numBigVol.Name = "numBigVol";
-            this.numBigVol.Size = new System.Drawing.Size(74, 22);
+            this.numBigVol.Size = new System.Drawing.Size(57, 22);
             this.numBigVol.TabIndex = 6;
             this.numBigVol.Value = new decimal(new int[] {
             5,
@@ -380,7 +402,7 @@ namespace CsDDE_Simple_
             this.button1.Location = new System.Drawing.Point(7, 38);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 18);
+            this.button1.Size = new System.Drawing.Size(57, 18);
             this.button1.TabIndex = 5;
             this.button1.Text = "連線";
             this.button1.UseVisualStyleBackColor = true;
@@ -415,6 +437,7 @@ namespace CsDDE_Simple_
             this.dgItemInfo.RowTemplate.Height = 24;
             this.dgItemInfo.Size = new System.Drawing.Size(301, 114);
             this.dgItemInfo.TabIndex = 0;
+            this.dgItemInfo.Visible = false;
             this.dgItemInfo.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItemInfo_CellValueChanged);
             // 
             // col_iteminfo_service
@@ -473,6 +496,7 @@ namespace CsDDE_Simple_
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.dgTest);
             this.groupBox4.Controls.Add(this.tbBigSub);
             this.groupBox4.Controls.Add(this.tbSub);
             this.groupBox4.Controls.Add(this.tbAccBigSellPct);
@@ -501,26 +525,27 @@ namespace CsDDE_Simple_
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.dgBigSell);
             this.groupBox4.Controls.Add(this.dgBigBuy);
-            this.groupBox4.Location = new System.Drawing.Point(6, 148);
+            this.groupBox4.Location = new System.Drawing.Point(331, 149);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(344, 339);
+            this.groupBox4.Size = new System.Drawing.Size(325, 339);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "DDE 項目資訊";
+            this.groupBox4.Visible = false;
             // 
             // tbBigSellCnt
             // 
             this.tbBigSellCnt.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbBigSellCnt.Location = new System.Drawing.Point(207, 197);
+            this.tbBigSellCnt.Location = new System.Drawing.Point(203, 198);
             this.tbBigSellCnt.Margin = new System.Windows.Forms.Padding(2);
             this.tbBigSellCnt.Name = "tbBigSellCnt";
-            this.tbBigSellCnt.Size = new System.Drawing.Size(65, 22);
+            this.tbBigSellCnt.Size = new System.Drawing.Size(63, 22);
             this.tbBigSellCnt.TabIndex = 37;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(205, 180);
+            this.label16.Location = new System.Drawing.Point(201, 181);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 12);
@@ -530,16 +555,16 @@ namespace CsDDE_Simple_
             // tbBigBuyCnt
             // 
             this.tbBigBuyCnt.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbBigBuyCnt.Location = new System.Drawing.Point(63, 197);
+            this.tbBigBuyCnt.Location = new System.Drawing.Point(60, 197);
             this.tbBigBuyCnt.Margin = new System.Windows.Forms.Padding(2);
             this.tbBigBuyCnt.Name = "tbBigBuyCnt";
-            this.tbBigBuyCnt.Size = new System.Drawing.Size(65, 22);
+            this.tbBigBuyCnt.Size = new System.Drawing.Size(63, 22);
             this.tbBigBuyCnt.TabIndex = 35;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(61, 180);
+            this.label15.Location = new System.Drawing.Point(58, 180);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 12);
@@ -549,7 +574,7 @@ namespace CsDDE_Simple_
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(129, 79);
+            this.label14.Location = new System.Drawing.Point(134, 79);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(53, 12);
@@ -559,46 +584,69 @@ namespace CsDDE_Simple_
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(129, 26);
+            this.label13.Location = new System.Drawing.Point(134, 26);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(41, 12);
             this.label13.TabIndex = 32;
             this.label13.Text = "買賣差";
             // 
+            // dgTest
+            // 
+            this.dgTest.AllowUserToAddRows = false;
+            this.dgTest.AllowUserToDeleteRows = false;
+            this.dgTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTest.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+            this.dgTest.Location = new System.Drawing.Point(136, 135);
+            this.dgTest.MultiSelect = false;
+            this.dgTest.Name = "dgTest";
+            this.dgTest.ReadOnly = true;
+            this.dgTest.RowHeadersVisible = false;
+            this.dgTest.RowTemplate.Height = 24;
+            this.dgTest.Size = new System.Drawing.Size(50, 197);
+            this.dgTest.TabIndex = 13;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "未知";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
             // tbBigSub
             // 
             this.tbBigSub.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbBigSub.ForeColor = System.Drawing.Color.Black;
-            this.tbBigSub.Location = new System.Drawing.Point(131, 96);
+            this.tbBigSub.Location = new System.Drawing.Point(136, 96);
             this.tbBigSub.Margin = new System.Windows.Forms.Padding(2);
             this.tbBigSub.Name = "tbBigSub";
-            this.tbBigSub.Size = new System.Drawing.Size(72, 36);
+            this.tbBigSub.Size = new System.Drawing.Size(52, 36);
             this.tbBigSub.TabIndex = 31;
             // 
             // tbSub
             // 
             this.tbSub.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbSub.ForeColor = System.Drawing.Color.Black;
-            this.tbSub.Location = new System.Drawing.Point(131, 42);
+            this.tbSub.Location = new System.Drawing.Point(136, 42);
             this.tbSub.Margin = new System.Windows.Forms.Padding(2);
             this.tbSub.Name = "tbSub";
-            this.tbSub.Size = new System.Drawing.Size(72, 36);
+            this.tbSub.Size = new System.Drawing.Size(52, 36);
             this.tbSub.TabIndex = 30;
             // 
             // tbAccBigSellPct
             // 
             this.tbAccBigSellPct.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbAccBigSellPct.Location = new System.Drawing.Point(207, 153);
+            this.tbAccBigSellPct.Location = new System.Drawing.Point(203, 154);
             this.tbAccBigSellPct.Margin = new System.Windows.Forms.Padding(2);
             this.tbAccBigSellPct.Name = "tbAccBigSellPct";
-            this.tbAccBigSellPct.Size = new System.Drawing.Size(64, 22);
+            this.tbAccBigSellPct.Size = new System.Drawing.Size(63, 22);
             this.tbAccBigSellPct.TabIndex = 29;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(205, 136);
+            this.label12.Location = new System.Drawing.Point(201, 137);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 12);
@@ -609,16 +657,16 @@ namespace CsDDE_Simple_
             // 
             this.tbAccBigSell.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbAccBigSell.ForeColor = System.Drawing.Color.Lime;
-            this.tbAccBigSell.Location = new System.Drawing.Point(207, 96);
+            this.tbAccBigSell.Location = new System.Drawing.Point(203, 97);
             this.tbAccBigSell.Margin = new System.Windows.Forms.Padding(2);
             this.tbAccBigSell.Name = "tbAccBigSell";
-            this.tbAccBigSell.Size = new System.Drawing.Size(64, 36);
+            this.tbAccBigSell.Size = new System.Drawing.Size(63, 36);
             this.tbAccBigSell.TabIndex = 27;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(205, 79);
+            this.label11.Location = new System.Drawing.Point(201, 80);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 12);
@@ -628,16 +676,16 @@ namespace CsDDE_Simple_
             // tbAccBigBuyPct
             // 
             this.tbAccBigBuyPct.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbAccBigBuyPct.Location = new System.Drawing.Point(63, 153);
+            this.tbAccBigBuyPct.Location = new System.Drawing.Point(60, 153);
             this.tbAccBigBuyPct.Margin = new System.Windows.Forms.Padding(2);
             this.tbAccBigBuyPct.Name = "tbAccBigBuyPct";
-            this.tbAccBigBuyPct.Size = new System.Drawing.Size(65, 22);
+            this.tbAccBigBuyPct.Size = new System.Drawing.Size(63, 22);
             this.tbAccBigBuyPct.TabIndex = 25;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(61, 136);
+            this.label10.Location = new System.Drawing.Point(58, 136);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 12);
@@ -648,16 +696,16 @@ namespace CsDDE_Simple_
             // 
             this.tbAccBigBuy.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbAccBigBuy.ForeColor = System.Drawing.Color.Red;
-            this.tbAccBigBuy.Location = new System.Drawing.Point(63, 96);
+            this.tbAccBigBuy.Location = new System.Drawing.Point(60, 96);
             this.tbAccBigBuy.Margin = new System.Windows.Forms.Padding(2);
             this.tbAccBigBuy.Name = "tbAccBigBuy";
-            this.tbAccBigBuy.Size = new System.Drawing.Size(65, 36);
+            this.tbAccBigBuy.Size = new System.Drawing.Size(63, 36);
             this.tbAccBigBuy.TabIndex = 23;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(61, 79);
+            this.label9.Location = new System.Drawing.Point(58, 79);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
@@ -666,16 +714,16 @@ namespace CsDDE_Simple_
             // 
             // tbSellPct
             // 
-            this.tbSellPct.Location = new System.Drawing.Point(207, 313);
+            this.tbSellPct.Location = new System.Drawing.Point(203, 314);
             this.tbSellPct.Margin = new System.Windows.Forms.Padding(2);
             this.tbSellPct.Name = "tbSellPct";
-            this.tbSellPct.Size = new System.Drawing.Size(64, 22);
+            this.tbSellPct.Size = new System.Drawing.Size(63, 22);
             this.tbSellPct.TabIndex = 21;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(205, 299);
+            this.label8.Location = new System.Drawing.Point(201, 300);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
@@ -684,16 +732,16 @@ namespace CsDDE_Simple_
             // 
             // tbBigPct
             // 
-            this.tbBigPct.Location = new System.Drawing.Point(63, 312);
+            this.tbBigPct.Location = new System.Drawing.Point(60, 312);
             this.tbBigPct.Margin = new System.Windows.Forms.Padding(2);
             this.tbBigPct.Name = "tbBigPct";
-            this.tbBigPct.Size = new System.Drawing.Size(65, 22);
+            this.tbBigPct.Size = new System.Drawing.Size(63, 22);
             this.tbBigPct.TabIndex = 19;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(61, 298);
+            this.label7.Location = new System.Drawing.Point(58, 298);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
@@ -702,16 +750,16 @@ namespace CsDDE_Simple_
             // 
             // tbBigSell
             // 
-            this.tbBigSell.Location = new System.Drawing.Point(207, 276);
+            this.tbBigSell.Location = new System.Drawing.Point(203, 277);
             this.tbBigSell.Margin = new System.Windows.Forms.Padding(2);
             this.tbBigSell.Name = "tbBigSell";
-            this.tbBigSell.Size = new System.Drawing.Size(64, 22);
+            this.tbBigSell.Size = new System.Drawing.Size(63, 22);
             this.tbBigSell.TabIndex = 17;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(205, 261);
+            this.label6.Location = new System.Drawing.Point(201, 262);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
@@ -720,16 +768,16 @@ namespace CsDDE_Simple_
             // 
             // tbBigBuy
             // 
-            this.tbBigBuy.Location = new System.Drawing.Point(63, 276);
+            this.tbBigBuy.Location = new System.Drawing.Point(60, 276);
             this.tbBigBuy.Margin = new System.Windows.Forms.Padding(2);
             this.tbBigBuy.Name = "tbBigBuy";
-            this.tbBigBuy.Size = new System.Drawing.Size(65, 22);
+            this.tbBigBuy.Size = new System.Drawing.Size(63, 22);
             this.tbBigBuy.TabIndex = 15;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(61, 261);
+            this.label5.Location = new System.Drawing.Point(58, 261);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
@@ -740,42 +788,42 @@ namespace CsDDE_Simple_
             // 
             this.tbAccSell.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbAccSell.ForeColor = System.Drawing.Color.Green;
-            this.tbAccSell.Location = new System.Drawing.Point(207, 42);
+            this.tbAccSell.Location = new System.Drawing.Point(203, 43);
             this.tbAccSell.Margin = new System.Windows.Forms.Padding(2);
             this.tbAccSell.Name = "tbAccSell";
-            this.tbAccSell.Size = new System.Drawing.Size(64, 36);
+            this.tbAccSell.Size = new System.Drawing.Size(63, 36);
             this.tbAccSell.TabIndex = 9;
             // 
             // tbTotalSell
             // 
-            this.tbTotalSell.Location = new System.Drawing.Point(207, 239);
+            this.tbTotalSell.Location = new System.Drawing.Point(203, 240);
             this.tbTotalSell.Margin = new System.Windows.Forms.Padding(2);
             this.tbTotalSell.Name = "tbTotalSell";
-            this.tbTotalSell.Size = new System.Drawing.Size(64, 22);
+            this.tbTotalSell.Size = new System.Drawing.Size(63, 22);
             this.tbTotalSell.TabIndex = 8;
             // 
             // tbAccBuy
             // 
             this.tbAccBuy.Font = new System.Drawing.Font("新細明體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbAccBuy.ForeColor = System.Drawing.Color.Maroon;
-            this.tbAccBuy.Location = new System.Drawing.Point(63, 42);
+            this.tbAccBuy.Location = new System.Drawing.Point(60, 42);
             this.tbAccBuy.Margin = new System.Windows.Forms.Padding(2);
             this.tbAccBuy.Name = "tbAccBuy";
-            this.tbAccBuy.Size = new System.Drawing.Size(65, 36);
+            this.tbAccBuy.Size = new System.Drawing.Size(63, 36);
             this.tbAccBuy.TabIndex = 7;
             // 
             // tbTotalBuy
             // 
-            this.tbTotalBuy.Location = new System.Drawing.Point(63, 239);
+            this.tbTotalBuy.Location = new System.Drawing.Point(60, 239);
             this.tbTotalBuy.Margin = new System.Windows.Forms.Padding(2);
             this.tbTotalBuy.Name = "tbTotalBuy";
-            this.tbTotalBuy.Size = new System.Drawing.Size(65, 22);
+            this.tbTotalBuy.Size = new System.Drawing.Size(63, 22);
             this.tbTotalBuy.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(205, 26);
+            this.label3.Location = new System.Drawing.Point(201, 27);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
@@ -785,7 +833,7 @@ namespace CsDDE_Simple_
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(205, 224);
+            this.label4.Location = new System.Drawing.Point(201, 225);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
@@ -795,7 +843,7 @@ namespace CsDDE_Simple_
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 26);
+            this.label2.Location = new System.Drawing.Point(58, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
@@ -805,7 +853,7 @@ namespace CsDDE_Simple_
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(61, 224);
+            this.label1.Location = new System.Drawing.Point(58, 224);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
@@ -819,7 +867,7 @@ namespace CsDDE_Simple_
             this.dgBigSell.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgBigSell.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SellVolumn});
-            this.dgBigSell.Location = new System.Drawing.Point(292, 21);
+            this.dgBigSell.Location = new System.Drawing.Point(271, 21);
             this.dgBigSell.MultiSelect = false;
             this.dgBigSell.Name = "dgBigSell";
             this.dgBigSell.ReadOnly = true;
@@ -835,39 +883,107 @@ namespace CsDDE_Simple_
             this.SellVolumn.ReadOnly = true;
             this.SellVolumn.Width = 60;
             // 
-            // dgTest
+            // dgBigBuyList
             // 
-            this.dgTest.AllowUserToAddRows = false;
-            this.dgTest.AllowUserToDeleteRows = false;
-            this.dgTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTest.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1});
-            this.dgTest.Location = new System.Drawing.Point(360, 169);
-            this.dgTest.MultiSelect = false;
-            this.dgTest.Name = "dgTest";
-            this.dgTest.ReadOnly = true;
-            this.dgTest.RowHeadersVisible = false;
-            this.dgTest.RowTemplate.Height = 24;
-            this.dgTest.Size = new System.Drawing.Size(50, 312);
-            this.dgTest.TabIndex = 13;
+            this.dgBigBuyList.AllowUserToAddRows = false;
+            this.dgBigBuyList.AllowUserToDeleteRows = false;
+            this.dgBigBuyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgBigBuyList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.buy});
+            this.dgBigBuyList.Location = new System.Drawing.Point(6, 143);
+            this.dgBigBuyList.MultiSelect = false;
+            this.dgBigBuyList.Name = "dgBigBuyList";
+            this.dgBigBuyList.ReadOnly = true;
+            this.dgBigBuyList.RowHeadersVisible = false;
+            this.dgBigBuyList.RowTemplate.Height = 24;
+            this.dgBigBuyList.Size = new System.Drawing.Size(80, 478);
+            this.dgBigBuyList.TabIndex = 14;
             // 
-            // dataGridViewTextBoxColumn1
+            // buy
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "未知";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 60;
+            this.buy.HeaderText = "大買盤";
+            this.buy.Name = "buy";
+            this.buy.ReadOnly = true;
+            // 
+            // dgBigSellList
+            // 
+            this.dgBigSellList.AllowUserToAddRows = false;
+            this.dgBigSellList.AllowUserToDeleteRows = false;
+            this.dgBigSellList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgBigSellList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.sell});
+            this.dgBigSellList.Location = new System.Drawing.Point(87, 143);
+            this.dgBigSellList.MultiSelect = false;
+            this.dgBigSellList.Name = "dgBigSellList";
+            this.dgBigSellList.ReadOnly = true;
+            this.dgBigSellList.RowHeadersVisible = false;
+            this.dgBigSellList.RowTemplate.Height = 24;
+            this.dgBigSellList.Size = new System.Drawing.Size(80, 478);
+            this.dgBigSellList.TabIndex = 15;
+            // 
+            // sell
+            // 
+            this.sell.HeaderText = "大賣盤";
+            this.sell.Name = "sell";
+            this.sell.ReadOnly = true;
+            // 
+            // dgSellList
+            // 
+            this.dgSellList.AllowUserToAddRows = false;
+            this.dgSellList.AllowUserToDeleteRows = false;
+            this.dgSellList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSellList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2});
+            this.dgSellList.Location = new System.Drawing.Point(252, 143);
+            this.dgSellList.MultiSelect = false;
+            this.dgSellList.Name = "dgSellList";
+            this.dgSellList.ReadOnly = true;
+            this.dgSellList.RowHeadersVisible = false;
+            this.dgSellList.RowTemplate.Height = 24;
+            this.dgSellList.Size = new System.Drawing.Size(80, 478);
+            this.dgSellList.TabIndex = 17;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "賣盤";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dgBuyList
+            // 
+            this.dgBuyList.AllowUserToAddRows = false;
+            this.dgBuyList.AllowUserToDeleteRows = false;
+            this.dgBuyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgBuyList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3});
+            this.dgBuyList.Location = new System.Drawing.Point(171, 143);
+            this.dgBuyList.MultiSelect = false;
+            this.dgBuyList.Name = "dgBuyList";
+            this.dgBuyList.ReadOnly = true;
+            this.dgBuyList.RowHeadersVisible = false;
+            this.dgBuyList.RowTemplate.Height = 24;
+            this.dgBuyList.Size = new System.Drawing.Size(80, 478);
+            this.dgBuyList.TabIndex = 16;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "買盤";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // DDEClientFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 492);
+            this.ClientSize = new System.Drawing.Size(336, 626);
+            this.Controls.Add(this.dgSellList);
             this.Controls.Add(this.dgItemInfo);
+            this.Controls.Add(this.dgBuyList);
             this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.dgBigSellList);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dgTest);
+            this.Controls.Add(this.dgBigBuyList);
             this.Name = "DDEClientFrm";
             this.Text = "CSharp DDE Client Monitor";
             this.Load += new System.EventHandler(this.DDEClientFrm_Load);
@@ -885,8 +1001,12 @@ namespace CsDDE_Simple_
             ((System.ComponentModel.ISupportInitialize)(this.dgBigBuy)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBigSell)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBigSell)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBigBuyList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBigSellList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSellList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBuyList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -961,6 +1081,14 @@ namespace CsDDE_Simple_
         private NumericUpDown numVol;
         private Label label21;
         private Label label20;
+        private DataGridView dgBigBuyList;
+        private DataGridView dgBigSellList;
+        private DataGridView dgSellList;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridView dgBuyList;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn buy;
+        private DataGridViewTextBoxColumn sell;
 
     }
 }

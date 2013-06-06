@@ -52,8 +52,8 @@ namespace CsDDE_Simple_
         int bigBuyCnt = 0;
         int bigSellCnt = 0;
 
-        float accBuyPct = 0;
-        float accSellPct = 0;
+        float accBigBuyPct = 0;
+        float accBigSellPct = 0;
 
         int BIG_VOL = 0;
         int ALERT_VOL = 0;
@@ -204,8 +204,8 @@ namespace CsDDE_Simple_
 
                 if (accSell > 0)
                 {
-                    accSellPct = accBigSell * 100 / accSell;
-                    tbAccBigSellPct.Text = accSellPct.ToString();
+                    accBigSellPct = accBigSell * 100 / accSell;
+                    tbAccBigSellPct.Text = accBigSellPct.ToString();
                 }
             }
         }
@@ -264,8 +264,8 @@ namespace CsDDE_Simple_
                 buyPct = bigBuy * 100 / totalBuy;
                 tbBigPct.Text = buyPct.ToString();
 
-                accBuyPct = accBigBuy * 100 / accBuy;
-                tbAccBigBuyPct.Text = accBuyPct.ToString();
+                accBigBuyPct = accBigBuy * 100 / accBuy;
+                tbAccBigBuyPct.Text = accBigBuyPct.ToString();
             }
         }
 
@@ -560,14 +560,31 @@ namespace CsDDE_Simple_
             curVol = 0;
             labelCurVol.Text = curVol.ToString();
 
+            int total = accBuy + accSell;
+
+            if (total > 0)
+            {
+                String buy = String.Format("{0}% ({1})", (accBuy * 100) / total, accBuy);
+                String sell = String.Format("{0}% ({1})", (accSell * 100) / total, accSell);
+
+                dgBuyList.Rows.Insert(0, buy);
+                dgSellList.Rows.Insert(0, sell);
+
+                String bigBuy = String.Format("{0}% ({1})", accBigBuyPct, accBigBuy);
+                String bigSell = String.Format("{0}% ({1})", accBigSellPct, accBigSell);
+
+                dgBigBuyList.Rows.Insert(0, bigBuy);
+                dgBigSellList.Rows.Insert(0, bigSell);
+            }
+
             accBuy = 0;
             tbAccBuy.Text = accBuy.ToString();
 
             accBigBuy = 0;
             tbAccBigBuy.Text = accBigBuy.ToString();
 
-            accBuyPct = 0;
-            tbAccBigBuyPct.Text = accBuyPct.ToString();
+            accBigBuyPct = 0;
+            tbAccBigBuyPct.Text = accBigBuyPct.ToString();
 
             dgBigBuy.Rows.Clear();
             
@@ -577,8 +594,8 @@ namespace CsDDE_Simple_
             accBigSell = 0;
             tbAccBigSell.Text = accBigSell.ToString();
 
-            accSellPct = 0;
-            tbAccBigSellPct.Text = accSellPct.ToString();
+            accBigSellPct = 0;
+            tbAccBigSellPct.Text = accBigSellPct.ToString();
 
             dgBigSell.Rows.Clear();
 
