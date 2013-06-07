@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Media;
 
+using Excel = Microsoft.Office.Interop.Excel;
 using NDde.Client;
 
 namespace CsDDE_Simple_
@@ -657,6 +658,7 @@ namespace CsDDE_Simple_
         private void DDEClientFrm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _shouldStop = true;
+            ExportDataGridview(dgList, "1K");
         }
 
         private void dgList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -710,6 +712,57 @@ namespace CsDDE_Simple_
                     a_dg.Rows.Insert(0, dtString, buy, sell);
                 }
             }
+        }
+
+        public void ExportDataGridview(DataGridView gridView, string fileName)
+        {
+            // creating Excel Application
+            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+
+
+            // creating new WorkBook within Excel application
+            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+
+
+            // creating new Excelsheet in workbook
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            // see the excel sheet behind the program
+            app.Visible = false;
+
+            // get the reference of first sheet. By default its name is Sheet1.
+            // store its reference to worksheet
+            worksheet = workbook.ActiveSheet as Microsoft.Office.Interop.Excel._Worksheet;
+
+            // changing the name of active sheet
+            worksheet.Name = fileName;
+
+
+            // storing header part in Excel
+            for (int i = 1; i < gridView.Columns.Count + 1; i++)
+            {
+                worksheet.Cells[1, i] = gridView.Columns[i - 1].HeaderText;
+            }
+
+
+
+            // storing Each row and column value to excel sheet
+            for (int i = 0; i < gridView.Rows.Count - 1; i++)
+            {
+                for (int j = 0; j < gridView.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = gridView.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+
+            string datePatt = @"yyyymmdd";
+            string dtString = DateTime.Now.ToString(datePatt);
+
+            // save the application
+            workbook.SaveAs(String.Format("e:\\{0}_{1}.xlsx", dtString, fileName), Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+
+            // Exit from the application
+            app.Quit();
         }
     }
 }
