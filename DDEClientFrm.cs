@@ -538,11 +538,11 @@ namespace CsDDE_Simple_
             ALERT_VOL = Convert.ToInt32(numBigVolAlert.Value);
             ALERT_CUR_VOL = Convert.ToInt32(numVol.Value);
 
-            AddConnection("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text));
-            AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text), "CurPrice");
-            AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text), "BuyPrice1");
-            AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text), "SellPrice1");
-            AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text), "TickVol");
+            AddConnection("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text.TrimEnd()));
+            AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text.TrimEnd()), "CurPrice");
+            AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text.TrimEnd()), "BuyPrice1");
+            AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text.TrimEnd()), "SellPrice1");
+            AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text.TrimEnd()), "TickVol");
 
             ThreadStart myRun = new ThreadStart(UpdateQueue);
 		    Thread myThread = new Thread(myRun);
@@ -648,10 +648,10 @@ namespace CsDDE_Simple_
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
-            TICK_VOLUMN = String.Format("CATDDE|FUTOPT<FO>{0}     !TickVol", textBoxName.Text);
-            BUY_PRICE = String.Format("CATDDE|FUTOPT<FO>{0}     !BuyPrice1", textBoxName.Text);
-            SELL_PRICE = String.Format("CATDDE|FUTOPT<FO>{0}     !SellPrice1", textBoxName.Text);
-            CUR_PRICE = String.Format("CATDDE|FUTOPT<FO>{0}     !CurPrice", textBoxName.Text);
+            TICK_VOLUMN = String.Format("CATDDE|FUTOPT<FO>{0}     !TickVol", textBoxName.Text.TrimEnd());
+            BUY_PRICE = String.Format("CATDDE|FUTOPT<FO>{0}     !BuyPrice1", textBoxName.Text.TrimEnd());
+            SELL_PRICE = String.Format("CATDDE|FUTOPT<FO>{0}     !SellPrice1", textBoxName.Text.TrimEnd());
+            CUR_PRICE = String.Format("CATDDE|FUTOPT<FO>{0}     !CurPrice", textBoxName.Text.TrimEnd());
         }
 
         private void DDEClientFrm_FormClosed(object sender, FormClosedEventArgs e)
@@ -678,6 +678,37 @@ namespace CsDDE_Simple_
             else if (a < b)
             {
                 dgList.Rows[e.RowIndex].Cells[otherIndex].Style.BackColor = Color.Khaki;
+            }
+        }
+
+        private void dgList_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            dgUpdate(3, dgList1);
+            dgUpdate(5, dgList2);
+            dgUpdate(15, dgList3);
+            dgUpdate(30, dgList4);
+        }
+
+        private void dgUpdate(int count, DataGridView a_dg)
+        {
+            if (DateTime.Now.Minute % count == 0)
+            {
+                if (dgList.Rows.Count >= count)
+                {
+                    int buy = 0;
+                    int sell = 0;
+
+                    for (int i = 0; i < count; ++i)
+                    {
+                        buy += Convert.ToInt32(dgList.Rows[i].Cells[1].Value);
+                        sell += Convert.ToInt32(dgList.Rows[i].Cells[2].Value);
+                    }
+
+                    string datePatt = @"hh:mm";
+                    string dtString = DateTime.Now.ToString(datePatt);
+
+                    a_dg.Rows.Insert(0, dtString, buy, sell);
+                }
             }
         }
     }
