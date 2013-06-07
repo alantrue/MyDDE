@@ -32,8 +32,8 @@ namespace CsDDE_Simple_
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgConnection = new System.Windows.Forms.DataGridView();
             this.col_service = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_topic = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,14 +102,12 @@ namespace CsDDE_Simple_
             this.label1 = new System.Windows.Forms.Label();
             this.dgBigSell = new System.Windows.Forms.DataGridView();
             this.SellVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBigBuyList = new System.Windows.Forms.DataGridView();
+            this.dgList = new System.Windows.Forms.DataGridView();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.買盤 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.賣盤 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBigSellList = new System.Windows.Forms.DataGridView();
-            this.sell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSellList = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBuyList = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgConnection)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -123,10 +121,7 @@ namespace CsDDE_Simple_
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgBigSell)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBigBuyList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBigSellList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSellList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBuyList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgList)).BeginInit();
             this.SuspendLayout();
             // 
             // dgConnection
@@ -169,10 +164,10 @@ namespace CsDDE_Simple_
             // 
             // col_remove_conn
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.col_remove_conn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            this.col_remove_conn.DefaultCellStyle = dataGridViewCellStyle11;
             this.col_remove_conn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.col_remove_conn.HeaderText = "";
             this.col_remove_conn.Name = "col_remove_conn";
@@ -183,10 +178,10 @@ namespace CsDDE_Simple_
             // 
             // col_btn_add_item
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.col_btn_add_item.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            this.col_btn_add_item.DefaultCellStyle = dataGridViewCellStyle12;
             this.col_btn_add_item.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.col_btn_add_item.HeaderText = "";
             this.col_btn_add_item.Name = "col_btn_add_item";
@@ -525,13 +520,12 @@ namespace CsDDE_Simple_
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.dgBigSell);
             this.groupBox4.Controls.Add(this.dgBigBuy);
-            this.groupBox4.Location = new System.Drawing.Point(331, 149);
+            this.groupBox4.Location = new System.Drawing.Point(6, 148);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(325, 339);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "DDE 項目資訊";
-            this.groupBox4.Visible = false;
             // 
             // tbBigSellCnt
             // 
@@ -883,107 +877,73 @@ namespace CsDDE_Simple_
             this.SellVolumn.ReadOnly = true;
             this.SellVolumn.Width = 60;
             // 
-            // dgBigBuyList
+            // dgList
             // 
-            this.dgBigBuyList.AllowUserToAddRows = false;
-            this.dgBigBuyList.AllowUserToDeleteRows = false;
-            this.dgBigBuyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgBigBuyList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.buy});
-            this.dgBigBuyList.Location = new System.Drawing.Point(6, 143);
-            this.dgBigBuyList.MultiSelect = false;
-            this.dgBigBuyList.Name = "dgBigBuyList";
-            this.dgBigBuyList.ReadOnly = true;
-            this.dgBigBuyList.RowHeadersVisible = false;
-            this.dgBigBuyList.RowTemplate.Height = 24;
-            this.dgBigBuyList.Size = new System.Drawing.Size(80, 478);
-            this.dgBigBuyList.TabIndex = 14;
+            this.dgList.AllowUserToAddRows = false;
+            this.dgList.AllowUserToDeleteRows = false;
+            this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.time,
+            this.買盤,
+            this.賣盤,
+            this.buy,
+            this.Column1});
+            this.dgList.Location = new System.Drawing.Point(5, 489);
+            this.dgList.MultiSelect = false;
+            this.dgList.Name = "dgList";
+            this.dgList.ReadOnly = true;
+            this.dgList.RowHeadersVisible = false;
+            this.dgList.RowHeadersWidth = 10;
+            this.dgList.RowTemplate.Height = 24;
+            this.dgList.Size = new System.Drawing.Size(326, 478);
+            this.dgList.TabIndex = 14;
+            this.dgList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgList_CellFormatting);
+            // 
+            // time
+            // 
+            this.time.HeaderText = "時間";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            this.time.Width = 60;
+            // 
+            // 買盤
+            // 
+            this.買盤.HeaderText = "買盤";
+            this.買盤.Name = "買盤";
+            this.買盤.ReadOnly = true;
+            this.買盤.Width = 60;
+            // 
+            // 賣盤
+            // 
+            this.賣盤.HeaderText = "賣盤";
+            this.賣盤.Name = "賣盤";
+            this.賣盤.ReadOnly = true;
+            this.賣盤.Width = 60;
             // 
             // buy
             // 
             this.buy.HeaderText = "大買盤";
             this.buy.Name = "buy";
             this.buy.ReadOnly = true;
+            this.buy.Width = 70;
             // 
-            // dgBigSellList
+            // Column1
             // 
-            this.dgBigSellList.AllowUserToAddRows = false;
-            this.dgBigSellList.AllowUserToDeleteRows = false;
-            this.dgBigSellList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgBigSellList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.sell});
-            this.dgBigSellList.Location = new System.Drawing.Point(87, 143);
-            this.dgBigSellList.MultiSelect = false;
-            this.dgBigSellList.Name = "dgBigSellList";
-            this.dgBigSellList.ReadOnly = true;
-            this.dgBigSellList.RowHeadersVisible = false;
-            this.dgBigSellList.RowTemplate.Height = 24;
-            this.dgBigSellList.Size = new System.Drawing.Size(80, 478);
-            this.dgBigSellList.TabIndex = 15;
-            // 
-            // sell
-            // 
-            this.sell.HeaderText = "大賣盤";
-            this.sell.Name = "sell";
-            this.sell.ReadOnly = true;
-            // 
-            // dgSellList
-            // 
-            this.dgSellList.AllowUserToAddRows = false;
-            this.dgSellList.AllowUserToDeleteRows = false;
-            this.dgSellList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSellList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2});
-            this.dgSellList.Location = new System.Drawing.Point(252, 143);
-            this.dgSellList.MultiSelect = false;
-            this.dgSellList.Name = "dgSellList";
-            this.dgSellList.ReadOnly = true;
-            this.dgSellList.RowHeadersVisible = false;
-            this.dgSellList.RowTemplate.Height = 24;
-            this.dgSellList.Size = new System.Drawing.Size(80, 478);
-            this.dgSellList.TabIndex = 17;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "賣盤";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dgBuyList
-            // 
-            this.dgBuyList.AllowUserToAddRows = false;
-            this.dgBuyList.AllowUserToDeleteRows = false;
-            this.dgBuyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgBuyList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3});
-            this.dgBuyList.Location = new System.Drawing.Point(171, 143);
-            this.dgBuyList.MultiSelect = false;
-            this.dgBuyList.Name = "dgBuyList";
-            this.dgBuyList.ReadOnly = true;
-            this.dgBuyList.RowHeadersVisible = false;
-            this.dgBuyList.RowTemplate.Height = 24;
-            this.dgBuyList.Size = new System.Drawing.Size(80, 478);
-            this.dgBuyList.TabIndex = 16;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "買盤";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.Column1.HeaderText = "大賣盤";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 70;
             // 
             // DDEClientFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 626);
-            this.Controls.Add(this.dgSellList);
+            this.ClientSize = new System.Drawing.Size(331, 976);
             this.Controls.Add(this.dgItemInfo);
-            this.Controls.Add(this.dgBuyList);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.dgBigSellList);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dgBigBuyList);
+            this.Controls.Add(this.dgList);
             this.Name = "DDEClientFrm";
             this.Text = "CSharp DDE Client Monitor";
             this.Load += new System.EventHandler(this.DDEClientFrm_Load);
@@ -1003,10 +963,7 @@ namespace CsDDE_Simple_
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgBigSell)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBigBuyList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBigSellList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSellList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgBuyList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1081,14 +1038,12 @@ namespace CsDDE_Simple_
         private NumericUpDown numVol;
         private Label label21;
         private Label label20;
-        private DataGridView dgBigBuyList;
-        private DataGridView dgBigSellList;
-        private DataGridView dgSellList;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridView dgBuyList;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridView dgList;
+        private DataGridViewTextBoxColumn time;
+        private DataGridViewTextBoxColumn 買盤;
+        private DataGridViewTextBoxColumn 賣盤;
         private DataGridViewTextBoxColumn buy;
-        private DataGridViewTextBoxColumn sell;
+        private DataGridViewTextBoxColumn Column1;
 
     }
 }

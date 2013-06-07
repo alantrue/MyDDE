@@ -560,22 +560,16 @@ namespace CsDDE_Simple_
             curVol = 0;
             labelCurVol.Text = curVol.ToString();
 
-            int total = accBuy + accSell;
+            String buy = String.Format("{0}", accBuy);
+            String sell = String.Format("{0}", accSell);
 
-            if (total > 0)
-            {
-                String buy = String.Format("{0}% ({1})", (accBuy * 100) / total, accBuy);
-                String sell = String.Format("{0}% ({1})", (accSell * 100) / total, accSell);
+            String bigBuy = String.Format("{0}", accBigBuy);
+            String bigSell = String.Format("{0}", accBigSell);
 
-                dgBuyList.Rows.Insert(0, buy);
-                dgSellList.Rows.Insert(0, sell);
+            string datePatt = @"hh:mm";
+            string dtString = DateTime.Now.ToString(datePatt);
 
-                String bigBuy = String.Format("{0}% ({1})", accBigBuyPct, accBigBuy);
-                String bigSell = String.Format("{0}% ({1})", accBigSellPct, accBigSell);
-
-                dgBigBuyList.Rows.Insert(0, bigBuy);
-                dgBigSellList.Rows.Insert(0, bigSell);
-            }
+            dgList.Rows.Insert(0, dtString, buy, sell, bigBuy, bigSell);
 
             accBuy = 0;
             tbAccBuy.Text = accBuy.ToString();
@@ -663,6 +657,28 @@ namespace CsDDE_Simple_
         private void DDEClientFrm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _shouldStop = true;
+        }
+
+        private void dgList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                return;
+            }
+
+            int otherIndex = (e.ColumnIndex % 2 > 0) ? e.ColumnIndex + 1 : e.ColumnIndex - 1;
+
+            int a = Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+            int b = Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[otherIndex].Value);
+
+            if (a > b)
+            {
+                dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Khaki;
+            }
+            else if (a < b)
+            {
+                dgList.Rows[e.RowIndex].Cells[otherIndex].Style.BackColor = Color.Khaki;
+            }
         }
     }
 }
