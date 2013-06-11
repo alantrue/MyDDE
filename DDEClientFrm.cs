@@ -561,16 +561,10 @@ namespace CsDDE_Simple_
             curVol = 0;
             labelCurVol.Text = curVol.ToString();
 
-            String buy = String.Format("{0}", accBuy);
-            String sell = String.Format("{0}", accSell);
-
-            String bigBuy = String.Format("{0}", accBigBuy);
-            String bigSell = String.Format("{0}", accBigSell);
-
             string datePatt = @"hh:mm";
             string dtString = DateTime.Now.ToString(datePatt);
 
-            dgList.Rows.Insert(0, dtString, buy, sell, bigBuy, bigSell);
+            dgList.Rows.Insert(0, dtString, accBuy, accSell, accBuy - accSell, accBigBuy, accBigSell, accBigBuy - accBigSell);
 
             accBuy = 0;
             tbAccBuy.Text = accBuy.ToString();
@@ -658,7 +652,7 @@ namespace CsDDE_Simple_
         private void DDEClientFrm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _shouldStop = true;
-            ExportDataGridview(dgList, "1K");
+            ExportDataGridview(dgList);
         }
 
         private void dgList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -668,53 +662,87 @@ namespace CsDDE_Simple_
                 return;
             }
 
-            int otherIndex = (e.ColumnIndex % 2 > 0) ? e.ColumnIndex + 1 : e.ColumnIndex - 1;
-
-            int a = Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
-            int b = Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[otherIndex].Value);
-
-            if (a > b)
+            if (e.ColumnIndex % 3 == 0)
             {
-                dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Khaki;
+                if (Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) > 0)
+                {
+                    dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightPink;
+                }
+                else
+                {
+                    dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightGreen;
+                }
             }
-            else if (a < b)
+            else
             {
-                dgList.Rows[e.RowIndex].Cells[otherIndex].Style.BackColor = Color.Khaki;
+                /*
+                int otherIndex = ((e.ColumnIndex % 3) % 2 > 0) ? e.ColumnIndex + 1 : e.ColumnIndex - 1;
+
+                int a = Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                int b = Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[otherIndex].Value);
+
+                Color c = (((e.ColumnIndex - 1) / 6) % 2 > 0) ? Color.Khaki : Color.PaleTurquoise;
+
+                if (a > b)
+                {
+                    dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
+                }
+                else if (a < b)
+                {
+                    dgList.Rows[e.RowIndex].Cells[otherIndex].Style.BackColor = c;
+                }
+                 * */
             }
+            
         }
 
         private void dgList_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            dgUpdate(3, dgList1);
-            dgUpdate(5, dgList2);
-            dgUpdate(15, dgList3);
-            dgUpdate(30, dgList4);
+            dgListUpdate(e);
         }
 
-        private void dgUpdate(int count, DataGridView a_dg)
+        private void dgListUpdate(DataGridViewRowsAddedEventArgs e)
         {
-            if (DateTime.Now.Minute % count == 0)
-            {
-                if (dgList.Rows.Count >= count)
-                {
-                    int buy = 0;
-                    int sell = 0;
+            dgList.Rows[e.RowIndex].Cells[7].Value = geDgListColValue(1, 3);
+            dgList.Rows[e.RowIndex].Cells[8].Value = geDgListColValue(2, 3);
+            dgList.Rows[e.RowIndex].Cells[9].Value = geDgListColValue(3, 3);
+            dgList.Rows[e.RowIndex].Cells[10].Value = geDgListColValue(4, 3);
+            dgList.Rows[e.RowIndex].Cells[11].Value = geDgListColValue(5, 3);
+            dgList.Rows[e.RowIndex].Cells[12].Value = geDgListColValue(6, 3);
 
-                    for (int i = 0; i < count; ++i)
-                    {
-                        buy += Convert.ToInt32(dgList.Rows[i].Cells[1].Value);
-                        sell += Convert.ToInt32(dgList.Rows[i].Cells[2].Value);
-                    }
+            dgList.Rows[e.RowIndex].Cells[13].Value = geDgListColValue(1, 5);
+            dgList.Rows[e.RowIndex].Cells[14].Value = geDgListColValue(2, 5);
+            dgList.Rows[e.RowIndex].Cells[15].Value = geDgListColValue(3, 5);
+            dgList.Rows[e.RowIndex].Cells[16].Value = geDgListColValue(4, 5);
+            dgList.Rows[e.RowIndex].Cells[17].Value = geDgListColValue(5, 5);
+            dgList.Rows[e.RowIndex].Cells[18].Value = geDgListColValue(6, 5);
 
-                    string datePatt = @"hh:mm";
-                    string dtString = DateTime.Now.ToString(datePatt);
-
-                    a_dg.Rows.Insert(0, dtString, buy, sell);
-                }
-            }
+            dgList.Rows[e.RowIndex].Cells[19].Value = geDgListColValue(1, 15);
+            dgList.Rows[e.RowIndex].Cells[20].Value = geDgListColValue(2, 15);
+            dgList.Rows[e.RowIndex].Cells[21].Value = geDgListColValue(3, 15);
+            dgList.Rows[e.RowIndex].Cells[22].Value = geDgListColValue(4, 15);
+            dgList.Rows[e.RowIndex].Cells[23].Value = geDgListColValue(5, 15);
+            dgList.Rows[e.RowIndex].Cells[24].Value = geDgListColValue(6, 15);
         }
 
-        public void ExportDataGridview(DataGridView gridView, string fileName)
+        private int geDgListColValue(int col, int count)
+        {
+            int v = 0;
+
+            for (int i = 0; i < count; ++i)
+            {
+                if (i >= dgList.Rows.Count)
+                {
+                    break;
+                }
+
+                v += Convert.ToInt32(dgList.Rows[i].Cells[col].Value);
+            }
+
+            return v;
+        }
+
+        public void ExportDataGridview(DataGridView gridView)
         {
             // creating Excel Application
             Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
@@ -735,7 +763,7 @@ namespace CsDDE_Simple_
             worksheet = workbook.ActiveSheet as Microsoft.Office.Interop.Excel._Worksheet;
 
             // changing the name of active sheet
-            worksheet.Name = fileName;
+            worksheet.Name = "data";
 
 
             // storing header part in Excel
@@ -755,11 +783,11 @@ namespace CsDDE_Simple_
                 }
             }
 
-            string datePatt = @"yyyymmdd";
+            string datePatt = @"yyyyMMdd_hh_mm";
             string dtString = DateTime.Now.ToString(datePatt);
 
             // save the application
-            workbook.SaveAs(String.Format("e:\\{0}_{1}.xlsx", dtString, fileName), Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            workbook.SaveAs(String.Format("e:\\{0}.xlsx", dtString), Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
             // Exit from the application
             app.Quit();
