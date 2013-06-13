@@ -92,6 +92,7 @@ namespace CsDDE_Simple_
         private void DDEClientFrm_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = true;
+            this.ActiveControl = textBoxName;
         }
 
         private void AddConnection(String a_service, String a_topic)
