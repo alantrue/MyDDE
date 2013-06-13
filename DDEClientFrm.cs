@@ -32,6 +32,14 @@ namespace CsDDE_Simple_
         int curPrice = 0;
         int lastPrice = 0;
 
+        int lastCurPrice = 0;
+        int lastBuyPrice = 0;
+        int lastSellPrice = 0;
+
+        int lastCurPrice2 = 0;
+        int lastBuyPrice2 = 0;
+        int lastSellPrice2 = 0;
+
         int curVol = 0;
         int lastVol = 0;
 
@@ -351,9 +359,67 @@ namespace CsDDE_Simple_
             {
                 buyQueue.Enqueue(tickVol);
             }
+            else if (curPrice <= lastBuyPrice)
+            {
+                sellQueue.Enqueue(tickVol);
+            }
+            else if (curPrice >= lastSellPrice)
+            {
+                buyQueue.Enqueue(tickVol);
+            }
+            else if (curPrice <= lastBuyPrice2)
+            {
+                sellQueue.Enqueue(tickVol);
+            }
+            else if (curPrice >= lastSellPrice2)
+            {
+                buyQueue.Enqueue(tickVol);
+            }
+            else if (curPrice < lastCurPrice)
+            {
+                sellQueue.Enqueue(tickVol);
+            }
+            else if (curPrice > lastCurPrice)
+            {
+                buyQueue.Enqueue(tickVol);
+            }
+            else if (curPrice < lastCurPrice2)
+            {
+                sellQueue.Enqueue(tickVol);
+            }
+            else if (curPrice > lastCurPrice2)
+            {
+                buyQueue.Enqueue(tickVol);
+            }
             else
             {
                 testQueue.Enqueue(tickVol);
+            }
+
+            if (lastCurPrice2 != lastCurPrice)
+            {
+                lastCurPrice2 = lastCurPrice;
+            }
+            if (lastBuyPrice2 != lastBuyPrice)
+            {
+                lastBuyPrice2 = lastBuyPrice;
+            }
+            if (lastSellPrice2 != lastSellPrice)
+            {
+                lastSellPrice2 = lastSellPrice;
+            }
+            
+            if (lastCurPrice != curPrice)
+            {
+                lastCurPrice = curPrice;
+            }
+            if (lastBuyPrice != buyPrice)
+            {
+                lastBuyPrice = buyPrice;
+            }
+            if (lastSellPrice != sellPrice)
+            {
+                lastSellPrice = sellPrice;
             }
         }
 
@@ -591,7 +657,7 @@ namespace CsDDE_Simple_
             RefreshSub();
             RefreshBigSub();
 
-            dgTest.Rows.Clear();
+            //dgTest.Rows.Clear();
         }
 
         private void numBigVol_ValueChanged(object sender, EventArgs e)

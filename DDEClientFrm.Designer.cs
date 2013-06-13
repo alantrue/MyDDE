@@ -32,8 +32,8 @@ namespace CsDDE_Simple_
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgConnection = new System.Windows.Forms.DataGridView();
             this.col_service = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_topic = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -184,10 +184,10 @@ namespace CsDDE_Simple_
             // 
             // col_remove_conn
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            this.col_remove_conn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.col_remove_conn.DefaultCellStyle = dataGridViewCellStyle1;
             this.col_remove_conn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.col_remove_conn.HeaderText = "";
             this.col_remove_conn.Name = "col_remove_conn";
@@ -198,10 +198,10 @@ namespace CsDDE_Simple_
             // 
             // col_btn_add_item
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            this.col_btn_add_item.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.col_btn_add_item.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_btn_add_item.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.col_btn_add_item.HeaderText = "";
             this.col_btn_add_item.Name = "col_btn_add_item";
@@ -935,7 +935,7 @@ namespace CsDDE_Simple_
             this.dgList.RowHeadersVisible = false;
             this.dgList.RowHeadersWidth = 10;
             this.dgList.RowTemplate.Height = 24;
-            this.dgList.Size = new System.Drawing.Size(331, 507);
+            this.dgList.Size = new System.Drawing.Size(367, 507);
             this.dgList.TabIndex = 14;
             this.dgList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgList_CellFormatting);
             this.dgList.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgList_RowsAdded);
@@ -979,7 +979,6 @@ namespace CsDDE_Simple_
             this.buy.Name = "buy";
             this.buy.ReadOnly = true;
             this.buy.Visible = false;
-            this.buy.Width = 5;
             // 
             // Column1
             // 
@@ -988,7 +987,6 @@ namespace CsDDE_Simple_
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
-            this.Column1.Width = 5;
             // 
             // Column14
             // 
@@ -997,7 +995,6 @@ namespace CsDDE_Simple_
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
             this.Column14.Visible = false;
-            this.Column14.Width = 5;
             // 
             // Column2
             // 
@@ -1030,7 +1027,6 @@ namespace CsDDE_Simple_
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.Visible = false;
-            this.Column4.Width = 5;
             // 
             // Column5
             // 
@@ -1039,7 +1035,6 @@ namespace CsDDE_Simple_
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             this.Column5.Visible = false;
-            this.Column5.Width = 5;
             // 
             // Column16
             // 
@@ -1048,7 +1043,6 @@ namespace CsDDE_Simple_
             this.Column16.Name = "Column16";
             this.Column16.ReadOnly = true;
             this.Column16.Visible = false;
-            this.Column16.Width = 5;
             // 
             // Column10
             // 
@@ -1081,7 +1075,6 @@ namespace CsDDE_Simple_
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Visible = false;
-            this.Column6.Width = 5;
             // 
             // Column7
             // 
@@ -1090,7 +1083,6 @@ namespace CsDDE_Simple_
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             this.Column7.Visible = false;
-            this.Column7.Width = 5;
             // 
             // Column18
             // 
@@ -1099,7 +1091,6 @@ namespace CsDDE_Simple_
             this.Column18.Name = "Column18";
             this.Column18.ReadOnly = true;
             this.Column18.Visible = false;
-            this.Column18.Width = 5;
             // 
             // 買盤15K
             // 
@@ -1132,7 +1123,6 @@ namespace CsDDE_Simple_
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             this.Column8.Visible = false;
-            this.Column8.Width = 5;
             // 
             // Column9
             // 
@@ -1141,7 +1131,6 @@ namespace CsDDE_Simple_
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             this.Column9.Visible = false;
-            this.Column9.Width = 5;
             // 
             // Column20
             // 
@@ -1150,13 +1139,12 @@ namespace CsDDE_Simple_
             this.Column20.Name = "Column20";
             this.Column20.ReadOnly = true;
             this.Column20.Visible = false;
-            this.Column20.Width = 5;
             // 
             // DDEClientFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 998);
+            this.ClientSize = new System.Drawing.Size(379, 998);
             this.Controls.Add(this.dgItemInfo);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
