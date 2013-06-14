@@ -624,14 +624,17 @@ namespace CsDDE_Simple_
 
         private void Clear()
         {
+            string datePatt = @"HH:mm";
+            string dtString = DateTime.Now.ToString(datePatt);
+
+            if (accBuy > 0 || accSell > 0)
+            {
+                dgList.Rows.Insert(0, dtString, curPrice, accBuy, accSell, accBuy - accSell, accBigBuy, accBigSell, accBigBuy - accBigSell);
+            }
+
             lastVol = 0;
             curVol = 0;
             labelCurVol.Text = curVol.ToString();
-
-            string datePatt = @"hh:mm";
-            string dtString = DateTime.Now.ToString(datePatt);
-
-            dgList.Rows.Insert(0, dtString, accBuy, accSell, accBuy - accSell, accBigBuy, accBigSell, accBigBuy - accBigSell);
 
             accBuy = 0;
             tbAccBuy.Text = accBuy.ToString();
@@ -729,7 +732,14 @@ namespace CsDDE_Simple_
                 return;
             }
 
-            if (e.ColumnIndex % 3 == 0)
+            if (e.ColumnIndex == 1)
+            {
+                return;
+            }
+
+            int col = e.ColumnIndex - 1;
+
+            if (col % 3 == 0)
             {
                 if (Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) > 0)
                 {
@@ -739,28 +749,7 @@ namespace CsDDE_Simple_
                 {
                     dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightGreen;
                 }
-            }
-            else
-            {
-                /*
-                int otherIndex = ((e.ColumnIndex % 3) % 2 > 0) ? e.ColumnIndex + 1 : e.ColumnIndex - 1;
-
-                int a = Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
-                int b = Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[otherIndex].Value);
-
-                Color c = (((e.ColumnIndex - 1) / 6) % 2 > 0) ? Color.Khaki : Color.PaleTurquoise;
-
-                if (a > b)
-                {
-                    dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = c;
-                }
-                else if (a < b)
-                {
-                    dgList.Rows[e.RowIndex].Cells[otherIndex].Style.BackColor = c;
-                }
-                 * */
-            }
-            
+            }            
         }
 
         private void dgList_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -770,30 +759,32 @@ namespace CsDDE_Simple_
 
         private void dgListUpdate(DataGridViewRowsAddedEventArgs e)
         {
-            dgList.Rows[e.RowIndex].Cells[7].Value = geDgListColValue(1, 3);
-            dgList.Rows[e.RowIndex].Cells[8].Value = geDgListColValue(2, 3);
-            dgList.Rows[e.RowIndex].Cells[9].Value = geDgListColValue(3, 3);
-            dgList.Rows[e.RowIndex].Cells[10].Value = geDgListColValue(4, 3);
-            dgList.Rows[e.RowIndex].Cells[11].Value = geDgListColValue(5, 3);
-            dgList.Rows[e.RowIndex].Cells[12].Value = geDgListColValue(6, 3);
+            dgList.Rows[e.RowIndex].Cells[8].Value = geDgListColValue(1, 5);
+            dgList.Rows[e.RowIndex].Cells[9].Value = geDgListColValue(2, 5);
+            dgList.Rows[e.RowIndex].Cells[10].Value = geDgListColValue(3, 5);
+            dgList.Rows[e.RowIndex].Cells[11].Value = geDgListColValue(4, 5);
+            dgList.Rows[e.RowIndex].Cells[12].Value = geDgListColValue(5, 5);
+            dgList.Rows[e.RowIndex].Cells[13].Value = geDgListColValue(6, 5);
 
-            dgList.Rows[e.RowIndex].Cells[13].Value = geDgListColValue(1, 5);
-            dgList.Rows[e.RowIndex].Cells[14].Value = geDgListColValue(2, 5);
-            dgList.Rows[e.RowIndex].Cells[15].Value = geDgListColValue(3, 5);
-            dgList.Rows[e.RowIndex].Cells[16].Value = geDgListColValue(4, 5);
-            dgList.Rows[e.RowIndex].Cells[17].Value = geDgListColValue(5, 5);
-            dgList.Rows[e.RowIndex].Cells[18].Value = geDgListColValue(6, 5);
+            dgList.Rows[e.RowIndex].Cells[14].Value = geDgListColValue(1, 10);
+            dgList.Rows[e.RowIndex].Cells[15].Value = geDgListColValue(2, 10);
+            dgList.Rows[e.RowIndex].Cells[16].Value = geDgListColValue(3, 10);
+            dgList.Rows[e.RowIndex].Cells[17].Value = geDgListColValue(4, 10);
+            dgList.Rows[e.RowIndex].Cells[18].Value = geDgListColValue(5, 10);
+            dgList.Rows[e.RowIndex].Cells[19].Value = geDgListColValue(6, 10);
 
-            dgList.Rows[e.RowIndex].Cells[19].Value = geDgListColValue(1, 15);
-            dgList.Rows[e.RowIndex].Cells[20].Value = geDgListColValue(2, 15);
-            dgList.Rows[e.RowIndex].Cells[21].Value = geDgListColValue(3, 15);
-            dgList.Rows[e.RowIndex].Cells[22].Value = geDgListColValue(4, 15);
-            dgList.Rows[e.RowIndex].Cells[23].Value = geDgListColValue(5, 15);
-            dgList.Rows[e.RowIndex].Cells[24].Value = geDgListColValue(6, 15);
+            dgList.Rows[e.RowIndex].Cells[20].Value = geDgListColValue(1, 15);
+            dgList.Rows[e.RowIndex].Cells[21].Value = geDgListColValue(2, 15);
+            dgList.Rows[e.RowIndex].Cells[22].Value = geDgListColValue(3, 15);
+            dgList.Rows[e.RowIndex].Cells[23].Value = geDgListColValue(4, 15);
+            dgList.Rows[e.RowIndex].Cells[24].Value = geDgListColValue(5, 15);
+            dgList.Rows[e.RowIndex].Cells[25].Value = geDgListColValue(6, 15);
         }
 
         private int geDgListColValue(int col, int count)
         {
+            col += 1;
+
             int v = 0;
 
             for (int i = 0; i < count; ++i)
@@ -850,7 +841,7 @@ namespace CsDDE_Simple_
                 }
             }
 
-            string datePatt = @"yyyyMMdd_hh_mm";
+            string datePatt = @"yyyyMMdd_HH_mm";
             string dtString = DateTime.Now.ToString(datePatt);
 
             // save the application

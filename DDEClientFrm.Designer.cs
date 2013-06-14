@@ -104,6 +104,7 @@ namespace CsDDE_Simple_
             this.SellVolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgList = new System.Windows.Forms.DataGridView();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.價格 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.買 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.賣 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -904,6 +905,7 @@ namespace CsDDE_Simple_
             this.dgList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.time,
+            this.價格,
             this.買,
             this.賣,
             this.Column13,
@@ -935,7 +937,7 @@ namespace CsDDE_Simple_
             this.dgList.RowHeadersVisible = false;
             this.dgList.RowHeadersWidth = 10;
             this.dgList.RowTemplate.Height = 24;
-            this.dgList.Size = new System.Drawing.Size(367, 507);
+            this.dgList.Size = new System.Drawing.Size(404, 507);
             this.dgList.TabIndex = 14;
             this.dgList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgList_CellFormatting);
             this.dgList.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgList_RowsAdded);
@@ -947,6 +949,14 @@ namespace CsDDE_Simple_
             this.time.Name = "time";
             this.time.ReadOnly = true;
             this.time.Width = 5;
+            // 
+            // 價格
+            // 
+            this.價格.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.價格.HeaderText = "價格";
+            this.價格.Name = "價格";
+            this.價格.ReadOnly = true;
+            this.價格.Width = 5;
             // 
             // 買
             // 
@@ -979,6 +989,7 @@ namespace CsDDE_Simple_
             this.buy.Name = "buy";
             this.buy.ReadOnly = true;
             this.buy.Visible = false;
+            this.buy.Width = 5;
             // 
             // Column1
             // 
@@ -987,6 +998,7 @@ namespace CsDDE_Simple_
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
+            this.Column1.Width = 5;
             // 
             // Column14
             // 
@@ -995,11 +1007,12 @@ namespace CsDDE_Simple_
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
             this.Column14.Visible = false;
+            this.Column14.Width = 5;
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column2.HeaderText = "買3";
+            this.Column2.HeaderText = "買5";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 5;
@@ -1007,7 +1020,7 @@ namespace CsDDE_Simple_
             // Column3
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column3.HeaderText = "賣3";
+            this.Column3.HeaderText = "賣5";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Width = 5;
@@ -1023,18 +1036,20 @@ namespace CsDDE_Simple_
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column4.HeaderText = "大買3";
+            this.Column4.HeaderText = "大買5";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.Visible = false;
+            this.Column4.Width = 5;
             // 
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column5.HeaderText = "大賣3";
+            this.Column5.HeaderText = "大賣5";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             this.Column5.Visible = false;
+            this.Column5.Width = 5;
             // 
             // Column16
             // 
@@ -1043,11 +1058,12 @@ namespace CsDDE_Simple_
             this.Column16.Name = "Column16";
             this.Column16.ReadOnly = true;
             this.Column16.Visible = false;
+            this.Column16.Width = 5;
             // 
             // Column10
             // 
             this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column10.HeaderText = "買5";
+            this.Column10.HeaderText = "買10";
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
             this.Column10.Width = 5;
@@ -1055,7 +1071,7 @@ namespace CsDDE_Simple_
             // Column11
             // 
             this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column11.HeaderText = "賣5";
+            this.Column11.HeaderText = "賣10";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             this.Column11.Width = 5;
@@ -1071,18 +1087,20 @@ namespace CsDDE_Simple_
             // Column6
             // 
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column6.HeaderText = "大買5";
+            this.Column6.HeaderText = "大買10";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Visible = false;
+            this.Column6.Width = 5;
             // 
             // Column7
             // 
             this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column7.HeaderText = "大賣5";
+            this.Column7.HeaderText = "大賣10";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             this.Column7.Visible = false;
+            this.Column7.Width = 5;
             // 
             // Column18
             // 
@@ -1091,6 +1109,7 @@ namespace CsDDE_Simple_
             this.Column18.Name = "Column18";
             this.Column18.ReadOnly = true;
             this.Column18.Visible = false;
+            this.Column18.Width = 5;
             // 
             // 買盤15K
             // 
@@ -1123,6 +1142,7 @@ namespace CsDDE_Simple_
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             this.Column8.Visible = false;
+            this.Column8.Width = 5;
             // 
             // Column9
             // 
@@ -1131,6 +1151,7 @@ namespace CsDDE_Simple_
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             this.Column9.Visible = false;
+            this.Column9.Width = 5;
             // 
             // Column20
             // 
@@ -1139,12 +1160,13 @@ namespace CsDDE_Simple_
             this.Column20.Name = "Column20";
             this.Column20.ReadOnly = true;
             this.Column20.Visible = false;
+            this.Column20.Width = 5;
             // 
             // DDEClientFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 998);
+            this.ClientSize = new System.Drawing.Size(404, 998);
             this.Controls.Add(this.dgItemInfo);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -1246,6 +1268,7 @@ namespace CsDDE_Simple_
         private Label label20;
         private DataGridView dgList;
         private DataGridViewTextBoxColumn time;
+        private DataGridViewTextBoxColumn 價格;
         private DataGridViewTextBoxColumn 買;
         private DataGridViewTextBoxColumn 賣;
         private DataGridViewTextBoxColumn Column13;
