@@ -21,27 +21,25 @@ namespace CsDDE_Simple_
         private Queue sellQueue = new Queue();
         private Queue testQueue = new Queue();
         private Queue curPriceQueue = new Queue();
-        private Queue curVolQueue = new Queue();
+        private Queue volQueue = new Queue();
         private System.Windows.Forms.Timer myTimer;
 
         string TICK_VOLUMN;
         string BUY_PRICE;
         string SELL_PRICE;
         string CUR_PRICE;
+        string VOLUMN;
 
         int curPrice = 0;
         int lastPrice = 0;
 
-        int lastCurPrice = 0;
-        int lastBuyPrice = 0;
-        int lastSellPrice = 0;
-
-        int lastCurPrice2 = 0;
-        int lastBuyPrice2 = 0;
-        int lastSellPrice2 = 0;
-
         int curVol = 0;
+        int lastCurVol = 0;
         int lastVol = 0;
+
+        int volumn = 0;
+        int lastVolumn1 = 0;
+        int lastVolumn2 = 0;
 
         int totalBuy = 0;
         int totalSell = 0;
@@ -153,6 +151,11 @@ namespace CsDDE_Simple_
             return GetValue(TICK_VOLUMN);
         }
 
+        private int GetVol()
+        {
+            return GetValue(VOLUMN);
+        }
+
         private int GetValue(string a_key)
         {
             //取得 key 所對應位置的 DataGridViewRow
@@ -197,7 +200,7 @@ namespace CsDDE_Simple_
 
                     if (oldBigSell / ALERT_VOL != accBigSell / ALERT_VOL)
                     {
-                        SystemSounds.Beep.Play();
+                        //SystemSounds.Beep.Play();
                         bigSellCnt += 1;
                         tbBigSellCnt.Text = bigSellCnt.ToString();
                     }
@@ -262,7 +265,7 @@ namespace CsDDE_Simple_
 
                     if (oldBigBuy / ALERT_VOL != accBigBuy / ALERT_VOL)
                     {
-                        SystemSounds.Asterisk.Play();
+                        //SystemSounds.Asterisk.Play();
                         bigBuyCnt += 1;
                         tbBigBuyCnt.Text = bigBuyCnt.ToString();
                     }
@@ -321,23 +324,40 @@ namespace CsDDE_Simple_
             }
         }
 
-        private void ShowCurVolumn(int a_vol)
+        private void ShowVolumn(int a_vol)
         {
             if (labelCurVol.InvokeRequired)
             {
-                AddDGCallback d = new AddDGCallback(ShowCurVolumn);
+                AddDGCallback d = new AddDGCallback(ShowVolumn);
                 Invoke(d, new object[] { a_vol });
             }
             else
             {
-                lastVol = curVol;
-                curVol += a_vol;
+                volumn = a_vol;
+
+                lastCurVol = curVol;
+                curVol = volumn - lastVolumn1;
 
                 labelCurVol.Text = curVol.ToString();
 
-                if (lastVol / ALERT_CUR_VOL != curVol / ALERT_CUR_VOL)
+                //cur >= 850
+                if (lastCurVol < 850 && curVol >= 850)
                 {
-                    SystemSounds.Hand.Play();
+                    SystemSounds.Exclamation.Play();
+                }
+
+                //last >= 300 & cur >= 500
+                if (lastVol >= 300)
+                {
+                    if (lastCurVol < 500 && curVol >= 500)
+                    {
+                        SystemSounds.Exclamation.Play();
+                    }
+                }
+
+                if (lastCurVol / ALERT_VOL != curVol / ALERT_VOL)
+                {
+                    SystemSounds.Asterisk.Play();
                 }
             }
         }
@@ -348,9 +368,11 @@ namespace CsDDE_Simple_
             int curPrice = GetCurPrice();
             int buyPrice = GetBuyPrice();
             int sellPrice = GetSellPrice();
+            int vol = GetVol();
 
             curPriceQueue.Enqueue(curPrice);
-            curVolQueue.Enqueue(tickVol);
+            volQueue.Enqueue(vol);
+
 
             if (curPrice <= buyPrice)
             {
@@ -360,67 +382,9 @@ namespace CsDDE_Simple_
             {
                 buyQueue.Enqueue(tickVol);
             }
-            else if (curPrice <= lastBuyPrice)
-            {
-                sellQueue.Enqueue(tickVol);
-            }
-            else if (curPrice >= lastSellPrice)
-            {
-                buyQueue.Enqueue(tickVol);
-            }
-            else if (curPrice <= lastBuyPrice2)
-            {
-                sellQueue.Enqueue(tickVol);
-            }
-            else if (curPrice >= lastSellPrice2)
-            {
-                buyQueue.Enqueue(tickVol);
-            }
-            else if (curPrice < lastCurPrice)
-            {
-                sellQueue.Enqueue(tickVol);
-            }
-            else if (curPrice > lastCurPrice)
-            {
-                buyQueue.Enqueue(tickVol);
-            }
-            else if (curPrice < lastCurPrice2)
-            {
-                sellQueue.Enqueue(tickVol);
-            }
-            else if (curPrice > lastCurPrice2)
-            {
-                buyQueue.Enqueue(tickVol);
-            }
             else
             {
                 testQueue.Enqueue(tickVol);
-            }
-
-            if (lastCurPrice2 != lastCurPrice)
-            {
-                lastCurPrice2 = lastCurPrice;
-            }
-            if (lastBuyPrice2 != lastBuyPrice)
-            {
-                lastBuyPrice2 = lastBuyPrice;
-            }
-            if (lastSellPrice2 != lastSellPrice)
-            {
-                lastSellPrice2 = lastSellPrice;
-            }
-            
-            if (lastCurPrice != curPrice)
-            {
-                lastCurPrice = curPrice;
-            }
-            if (lastBuyPrice != buyPrice)
-            {
-                lastBuyPrice = buyPrice;
-            }
-            if (lastSellPrice != sellPrice)
-            {
-                lastSellPrice = sellPrice;
             }
         }
 
@@ -452,10 +416,10 @@ namespace CsDDE_Simple_
                     ShowCurPrice(curPrice);
                 }
 
-                if (curVolQueue.Count > 0)
+                if (volQueue.Count > 0)
                 {
-                    int curVolumn = (int)curVolQueue.Dequeue();
-                    ShowCurVolumn(curVolumn);
+                    int vol = (int)volQueue.Dequeue();
+                    ShowVolumn(vol);
                 }
             }
         }
@@ -611,6 +575,7 @@ namespace CsDDE_Simple_
             AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text.TrimEnd()), "BuyPrice1");
             AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text.TrimEnd()), "SellPrice1");
             AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text.TrimEnd()), "TickVol");
+            AddConnectionItem("CATDDE", String.Format("FUTOPT<FO>{0}     ", textBoxName.Text.TrimEnd()), "Volume");
 
             ThreadStart myRun = new ThreadStart(UpdateQueue);
 		    Thread myThread = new Thread(myRun);
@@ -632,9 +597,15 @@ namespace CsDDE_Simple_
                 dgList.Rows.Insert(0, dtString, curPrice, accBuy, accSell, accBuy - accSell, accBigBuy, accBigSell, accBigBuy - accBigSell);
             }
 
-            lastVol = 0;
+            lastVolumn2 = lastVolumn1;
+            lastVolumn1 = volumn;
+
+            lastVol = lastVolumn1 - lastVolumn2;
+            labelLastVol.Text = lastVol.ToString();
+
             curVol = 0;
-            labelCurVol.Text = curVol.ToString();
+            lastCurVol = 0;
+            labelCurVol.Text = "0";
 
             accBuy = 0;
             tbAccBuy.Text = accBuy.ToString();
@@ -717,6 +688,7 @@ namespace CsDDE_Simple_
             BUY_PRICE = String.Format("CATDDE|FUTOPT<FO>{0}     !BuyPrice1", textBoxName.Text.TrimEnd());
             SELL_PRICE = String.Format("CATDDE|FUTOPT<FO>{0}     !SellPrice1", textBoxName.Text.TrimEnd());
             CUR_PRICE = String.Format("CATDDE|FUTOPT<FO>{0}     !CurPrice", textBoxName.Text.TrimEnd());
+            VOLUMN = String.Format("CATDDE|FUTOPT<FO>{0}     !Volume", textBoxName.Text.TrimEnd());
         }
 
         private void DDEClientFrm_FormClosed(object sender, FormClosedEventArgs e)
@@ -727,19 +699,9 @@ namespace CsDDE_Simple_
 
         private void dgList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 0)
-            {
-                return;
-            }
-
-            if (e.ColumnIndex == 1)
-            {
-                return;
-            }
-
-            int col = e.ColumnIndex - 1;
-
-            if (col % 3 == 0)
+            if (e.ColumnIndex == 4 ||
+                e.ColumnIndex == 7 ||
+                e.ColumnIndex > 7)
             {
                 if (Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) > 0)
                 {
@@ -749,42 +711,42 @@ namespace CsDDE_Simple_
                 {
                     dgList.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightGreen;
                 }
-            }            
+            }
         }
 
         private void dgList_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             dgListUpdate(e);
+
+            if (dgList.Rows.Count > 2)
+            {
+                int a = Convert.ToInt32(dgList.Rows[e.RowIndex].Cells[10].Value);
+                int b = Convert.ToInt32(dgList.Rows[e.RowIndex + 1].Cells[10].Value);
+                if (a * b <= 0)
+                {
+                    //SystemSounds.Hand.Play();
+                }
+            }
         }
 
         private void dgListUpdate(DataGridViewRowsAddedEventArgs e)
         {
-            dgList.Rows[e.RowIndex].Cells[8].Value = geDgListColValue(1, 5);
-            dgList.Rows[e.RowIndex].Cells[9].Value = geDgListColValue(2, 5);
-            dgList.Rows[e.RowIndex].Cells[10].Value = geDgListColValue(3, 5);
-            dgList.Rows[e.RowIndex].Cells[11].Value = geDgListColValue(4, 5);
-            dgList.Rows[e.RowIndex].Cells[12].Value = geDgListColValue(5, 5);
-            dgList.Rows[e.RowIndex].Cells[13].Value = geDgListColValue(6, 5);
-
-            dgList.Rows[e.RowIndex].Cells[14].Value = geDgListColValue(1, 10);
-            dgList.Rows[e.RowIndex].Cells[15].Value = geDgListColValue(2, 10);
-            dgList.Rows[e.RowIndex].Cells[16].Value = geDgListColValue(3, 10);
-            dgList.Rows[e.RowIndex].Cells[17].Value = geDgListColValue(4, 10);
-            dgList.Rows[e.RowIndex].Cells[18].Value = geDgListColValue(5, 10);
-            dgList.Rows[e.RowIndex].Cells[19].Value = geDgListColValue(6, 10);
-
-            dgList.Rows[e.RowIndex].Cells[20].Value = geDgListColValue(1, 15);
-            dgList.Rows[e.RowIndex].Cells[21].Value = geDgListColValue(2, 15);
-            dgList.Rows[e.RowIndex].Cells[22].Value = geDgListColValue(3, 15);
-            dgList.Rows[e.RowIndex].Cells[23].Value = geDgListColValue(4, 15);
-            dgList.Rows[e.RowIndex].Cells[24].Value = geDgListColValue(5, 15);
-            dgList.Rows[e.RowIndex].Cells[25].Value = geDgListColValue(6, 15);
+            dgList.Rows[e.RowIndex].Cells[8].Value = geDgListColValue(4, 3);
+            dgList.Rows[e.RowIndex].Cells[9].Value = geDgListColValue(7, 3);
+            dgList.Rows[e.RowIndex].Cells[10].Value = geDgListColValue(4, 5);
+            dgList.Rows[e.RowIndex].Cells[11].Value = geDgListColValue(7, 5);
+            dgList.Rows[e.RowIndex].Cells[12].Value = geDgListColValue(4, 10);
+            dgList.Rows[e.RowIndex].Cells[13].Value = geDgListColValue(7, 10);
+            dgList.Rows[e.RowIndex].Cells[14].Value = geDgListColValue(4, 15);
+            dgList.Rows[e.RowIndex].Cells[15].Value = geDgListColValue(7, 15);
+            dgList.Rows[e.RowIndex].Cells[16].Value = geDgListColValue(4, 20);
+            dgList.Rows[e.RowIndex].Cells[17].Value = geDgListColValue(7, 20);
+            dgList.Rows[e.RowIndex].Cells[18].Value = geDgListColValue(4, 30);
+            dgList.Rows[e.RowIndex].Cells[19].Value = geDgListColValue(7, 30);
         }
 
         private int geDgListColValue(int col, int count)
         {
-            col += 1;
-
             int v = 0;
 
             for (int i = 0; i < count; ++i)
@@ -797,7 +759,7 @@ namespace CsDDE_Simple_
                 v += Convert.ToInt32(dgList.Rows[i].Cells[col].Value);
             }
 
-            return v;
+            return v/count;
         }
 
         public void ExportDataGridview(DataGridView gridView)

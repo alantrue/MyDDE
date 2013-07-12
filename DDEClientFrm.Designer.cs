@@ -32,8 +32,8 @@ namespace CsDDE_Simple_
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgConnection = new System.Windows.Forms.DataGridView();
             this.col_service = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_topic = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +42,7 @@ namespace CsDDE_Simple_
             this.col_btn_add_item = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelLastVol = new System.Windows.Forms.Label();
             this.numVol = new System.Windows.Forms.NumericUpDown();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -112,23 +113,17 @@ namespace CsDDE_Simple_
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.買盤15K = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgConnection)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -185,10 +180,10 @@ namespace CsDDE_Simple_
             // 
             // col_remove_conn
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.col_remove_conn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.col_remove_conn.DefaultCellStyle = dataGridViewCellStyle3;
             this.col_remove_conn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.col_remove_conn.HeaderText = "";
             this.col_remove_conn.Name = "col_remove_conn";
@@ -199,10 +194,10 @@ namespace CsDDE_Simple_
             // 
             // col_btn_add_item
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Beige;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.col_btn_add_item.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Beige;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.col_btn_add_item.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_btn_add_item.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.col_btn_add_item.HeaderText = "";
             this.col_btn_add_item.Name = "col_btn_add_item";
@@ -225,6 +220,7 @@ namespace CsDDE_Simple_
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.labelLastVol);
             this.groupBox3.Controls.Add(this.numVol);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label20);
@@ -247,6 +243,16 @@ namespace CsDDE_Simple_
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DDE 項目資訊";
+            // 
+            // labelLastVol
+            // 
+            this.labelLastVol.AutoSize = true;
+            this.labelLastVol.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.labelLastVol.Location = new System.Drawing.Point(234, 95);
+            this.labelLastVol.Name = "labelLastVol";
+            this.labelLastVol.Size = new System.Drawing.Size(64, 19);
+            this.labelLastVol.TabIndex = 24;
+            this.labelLastVol.Text = "volumn";
             // 
             // numVol
             // 
@@ -913,23 +919,17 @@ namespace CsDDE_Simple_
             this.Column1,
             this.Column14,
             this.Column2,
-            this.Column3,
-            this.Column15,
-            this.Column4,
             this.Column5,
-            this.Column16,
-            this.Column10,
-            this.Column11,
-            this.Column17,
+            this.Column15,
             this.Column6,
+            this.Column11,
             this.Column7,
-            this.Column18,
             this.買盤15K,
-            this.Column12,
-            this.Column19,
             this.Column8,
+            this.Column20,
             this.Column9,
-            this.Column20});
+            this.Column3,
+            this.Column4});
             this.dgList.Location = new System.Drawing.Point(0, 489);
             this.dgList.MultiSelect = false;
             this.dgList.Name = "dgList";
@@ -937,7 +937,7 @@ namespace CsDDE_Simple_
             this.dgList.RowHeadersVisible = false;
             this.dgList.RowHeadersWidth = 10;
             this.dgList.RowTemplate.Height = 24;
-            this.dgList.Size = new System.Drawing.Size(404, 507);
+            this.dgList.Size = new System.Drawing.Size(331, 507);
             this.dgList.TabIndex = 14;
             this.dgList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgList_CellFormatting);
             this.dgList.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgList_RowsAdded);
@@ -988,7 +988,6 @@ namespace CsDDE_Simple_
             this.buy.HeaderText = "大買";
             this.buy.Name = "buy";
             this.buy.ReadOnly = true;
-            this.buy.Visible = false;
             this.buy.Width = 5;
             // 
             // Column1
@@ -997,7 +996,6 @@ namespace CsDDE_Simple_
             this.Column1.HeaderText = "大賣";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
             this.Column1.Width = 5;
             // 
             // Column14
@@ -1006,167 +1004,109 @@ namespace CsDDE_Simple_
             this.Column14.HeaderText = "差";
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
-            this.Column14.Visible = false;
             this.Column14.Width = 5;
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column2.HeaderText = "買5";
+            this.Column2.HeaderText = "3";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 5;
             // 
-            // Column3
+            // Column5
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column3.HeaderText = "賣5";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 5;
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Column5.HeaderText = "大3";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 5;
             // 
             // Column15
             // 
             this.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column15.HeaderText = "差";
+            this.Column15.HeaderText = "5";
             this.Column15.Name = "Column15";
             this.Column15.ReadOnly = true;
             this.Column15.Width = 5;
             // 
-            // Column4
+            // Column6
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column4.HeaderText = "大買5";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Visible = false;
-            this.Column4.Width = 5;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column5.HeaderText = "大賣5";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Visible = false;
-            this.Column5.Width = 5;
-            // 
-            // Column16
-            // 
-            this.Column16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column16.HeaderText = "差";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            this.Column16.Visible = false;
-            this.Column16.Width = 5;
-            // 
-            // Column10
-            // 
-            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column10.HeaderText = "買10";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Width = 5;
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Column6.HeaderText = "大5";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 5;
             // 
             // Column11
             // 
             this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column11.HeaderText = "賣10";
+            this.Column11.HeaderText = "10";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             this.Column11.Width = 5;
             // 
-            // Column17
-            // 
-            this.Column17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column17.HeaderText = "差";
-            this.Column17.Name = "Column17";
-            this.Column17.ReadOnly = true;
-            this.Column17.Width = 5;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column6.HeaderText = "大買10";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Visible = false;
-            this.Column6.Width = 5;
-            // 
             // Column7
             // 
             this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column7.HeaderText = "大賣10";
+            this.Column7.HeaderText = "大10";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
-            this.Column7.Visible = false;
             this.Column7.Width = 5;
-            // 
-            // Column18
-            // 
-            this.Column18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column18.HeaderText = "差";
-            this.Column18.Name = "Column18";
-            this.Column18.ReadOnly = true;
-            this.Column18.Visible = false;
-            this.Column18.Width = 5;
             // 
             // 買盤15K
             // 
             this.買盤15K.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.買盤15K.HeaderText = "買15";
+            this.買盤15K.HeaderText = "15";
             this.買盤15K.Name = "買盤15K";
             this.買盤15K.ReadOnly = true;
             this.買盤15K.Width = 5;
             // 
-            // Column12
-            // 
-            this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column12.HeaderText = "賣15";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Width = 5;
-            // 
-            // Column19
-            // 
-            this.Column19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column19.HeaderText = "差";
-            this.Column19.Name = "Column19";
-            this.Column19.ReadOnly = true;
-            this.Column19.Width = 5;
-            // 
             // Column8
             // 
             this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column8.HeaderText = "大買15";
+            this.Column8.HeaderText = "大15";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
-            this.Column8.Visible = false;
             this.Column8.Width = 5;
-            // 
-            // Column9
-            // 
-            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column9.HeaderText = "大賣15";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Visible = false;
-            this.Column9.Width = 5;
             // 
             // Column20
             // 
             this.Column20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Column20.HeaderText = "差";
+            this.Column20.HeaderText = "20";
             this.Column20.Name = "Column20";
             this.Column20.ReadOnly = true;
-            this.Column20.Visible = false;
             this.Column20.Width = 5;
+            // 
+            // Column9
+            // 
+            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Column9.HeaderText = "大20";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 5;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Column3.HeaderText = "30";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 5;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Column4.HeaderText = "大30";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 5;
             // 
             // DDEClientFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 998);
+            this.ClientSize = new System.Drawing.Size(333, 998);
             this.Controls.Add(this.dgItemInfo);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -1276,23 +1216,18 @@ namespace CsDDE_Simple_
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column14;
         private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column15;
-        private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column16;
-        private DataGridViewTextBoxColumn Column10;
-        private DataGridViewTextBoxColumn Column11;
-        private DataGridViewTextBoxColumn Column17;
+        private DataGridViewTextBoxColumn Column15;
         private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column11;
         private DataGridViewTextBoxColumn Column7;
-        private DataGridViewTextBoxColumn Column18;
         private DataGridViewTextBoxColumn 買盤15K;
-        private DataGridViewTextBoxColumn Column12;
-        private DataGridViewTextBoxColumn Column19;
         private DataGridViewTextBoxColumn Column8;
-        private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column20;
+        private DataGridViewTextBoxColumn Column9;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private Label labelLastVol;
 
     }
 }
